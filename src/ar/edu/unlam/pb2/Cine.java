@@ -23,9 +23,9 @@ public class Cine {
 	        return this.nombre;
 	    }
 
-	    public void agregarSala(SalaCine sala) {
-	        this.salas.add(sala);
-	    }
+		public Boolean agregarSala(SalaCine nuevaSala) {
+			return this.salas.add(nuevaSala);
+		}
 
 	    public HashSet<SalaCine> getSalas() {
 	        return this.salas;
