@@ -127,4 +127,24 @@ public class TestCine {
 	     assertEquals(2, resultado.size());
 	     
 	 }
+	 
+	@Test   
+	public void testQuePermiteEliminarUnaSalaDelCineCuandoLaSalaNoTengaUnCliente() {
+	    String nombre="Cinepolis";
+			 
+		Integer numero=1; 
+		Integer capacidad=100;
+		        
+		Cine cine = new Cine(nombre);
+
+		SalaCine sala1 = new SalaCine2d(numero, capacidad);
+	    cine.agregarSala(sala1);
+	    Boolean seElimino=cine.eliminarUnaSala(sala1);
+	    Integer cantidadDeSalasEsperada=0;
+	        
+	    assertTrue(seElimino);
+	    assertEquals(cantidadDeSalasEsperada,cine.cantidadDeSalasAgregadas());
+	      
+	}
+	
 }
