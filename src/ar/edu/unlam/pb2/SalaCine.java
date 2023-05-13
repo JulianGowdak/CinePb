@@ -1,6 +1,7 @@
 package ar.edu.unlam.pb2;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public abstract class SalaCine {
 	
@@ -8,14 +9,14 @@ public abstract class SalaCine {
     private Integer capacidad;
     private ArrayList<Pelicula> peliculas;
     private String visualizacion;
-    private ArrayList<Cliente>listaDeClientes;
+    private HashSet<Cliente>listaDeClientes;
 	
     public SalaCine(Integer numero, Integer capacidad, String visualizacion) {
         this.numero = numero;
         this.capacidad = capacidad;
         this.setVisualizacion(visualizacion);
         peliculas = new ArrayList<>();
-        this.listaDeClientes=new ArrayList<>(capacidad);
+        this.listaDeClientes=new HashSet<>(capacidad);
     }
     
     public SalaCine(Integer numero, Integer capacidad) {
@@ -23,7 +24,7 @@ public abstract class SalaCine {
         this.capacidad = capacidad;
         this.visualizacion=" ";
         peliculas = new ArrayList<>();
-        this.listaDeClientes=new ArrayList<>();
+        this.listaDeClientes=new HashSet<>();
 
     }
     
@@ -50,7 +51,6 @@ public abstract class SalaCine {
 
 	public abstract Boolean agregarPelicula(Pelicula pelicula);
 
-
 	public abstract Boolean quitarPelicula(Pelicula pelicula);
 	
 	public abstract Boolean agregarCliente(Cliente nuevo) ;
@@ -68,11 +68,11 @@ public abstract class SalaCine {
 	
 			
 	
-	 public ArrayList<Cliente> getListaDeClientes() {
+	 public HashSet<Cliente> getListaDeClientes() {
 			return listaDeClientes;
 		}
 
-		public void setListaDeClientes(ArrayList<Cliente> listaDeClientes) {
+		public void setListaDeClientes(HashSet<Cliente> listaDeClientes) {
 			this.listaDeClientes = listaDeClientes;
 		}
 
