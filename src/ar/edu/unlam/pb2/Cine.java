@@ -52,5 +52,18 @@ public class Cine {
 	        }
 	        return salasPorCapacidad;
 	    }
+	    
+	    public Boolean eliminarUnaSala(SalaCine salaAEliminar) {
+	    	Boolean seElimino=false;
+	    	for(SalaCine salaCine:salas){
+	    		if(salas.contains(salaAEliminar)) {
+	    		   if(salaCine.getListaDeClientes().size()==0) {
+	    		      return this.salas.remove(salaAEliminar);
+	    		  
+	    		}
+	    	  }
+	    	}
+	    	 return seElimino;
+	    }
 
 }
