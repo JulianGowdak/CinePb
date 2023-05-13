@@ -35,9 +35,10 @@ public class TestCine {
         cine.agregarSala(sala1);
 
         SalaCine sala2 = new SalaCine2d(1, 50);
-        cine.agregarSala(sala2);
+        Boolean seAgrego=cine.agregarSala(sala2);
 
         assertEquals(1, cine.getSalas().size());
+        assertFalse(seAgrego);
       
     }
 	
