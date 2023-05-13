@@ -65,5 +65,9 @@ public class Cine {
 	    	}
 	    	 return seElimino;
 	    }
+	    
+	    public Integer cantidadDeSalasAgregadas() {
+	    	return this.salas.size();
+	    }
 
 }
