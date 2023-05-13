@@ -11,18 +11,20 @@ import org.junit.Test;
 public class TestCine {
 
 	@Test
-    public void testAgregarSala2D() {
-        Cine cine = new Cine("Cinepolis");
+    public void testQuePermiteAgregarUnaSalaDeTipo2DAUnCine() {
+        String nombre="Cinepolis";
+        Integer numero=1; 
+        Integer capacidad=100;
+        Integer cantidadDeSalasEsperada=1;
+        
+		Cine cine = new Cine(nombre);
 
-        SalaCine sala1 = new SalaCine2d(1, 100);
-        cine.agregarSala(sala1);
+        SalaCine sala2D = new SalaCine2d(numero, capacidad);
+        Boolean seAgrego=cine.agregarSala(sala2D);
 
-        SalaCine sala2 = new SalaCine2d(2, 50);
-        cine.agregarSala(sala2);
-
-        assertEquals(2, cine.getSalas().size());
-        assertTrue(cine.getSalas().contains(sala1));
-        assertTrue(cine.getSalas().contains(sala2));
+        assertEquals(cantidadDeSalasEsperada,cine.cantidadDeSalasAgregadas());
+        assertTrue(seAgrego);
+       
     }
 	
 	@Test
