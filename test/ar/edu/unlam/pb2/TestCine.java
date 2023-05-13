@@ -13,6 +13,7 @@ public class TestCine {
 	@Test
     public void testQuePermiteAgregarUnaSalaDeTipo2DAUnCine() {
         String nombre="Cinepolis";
+        
         Integer numero=1; 
         Integer capacidad=100;
         Integer cantidadDeSalasEsperada=1;
@@ -146,5 +147,30 @@ public class TestCine {
 	    assertEquals(cantidadDeSalasEsperada,cine.cantidadDeSalasAgregadas());
 	      
 	}
+	
+	@Test
+    public void testQueNoPermiteEliminarUnaSalaDelCineCuandoTengaUnCliente() {
+		 String nombre="Cinepolis";
+		 
+	     Integer numero=1; 
+	     Integer capacidad=100;
+	     
+	     Long dni=111111111L;
+	     Integer edad=31;
+	     String nombreCliente="facundo";
+	     String apellido="Benitez";
+	        
+		 Cine cine = new Cine(nombre);
+	     SalaCine sala1 = new SalaCine2d(numero, capacidad);
+	     cine.agregarSala(sala1);
+	     Cliente facundo=new Cliente(dni, edad,nombreCliente,apellido);
+	     sala1.agregarCliente(facundo);
+         Boolean seElimino=cine.eliminarUnaSala(sala1); 
+         Integer cantidadDeSalasEsperada=1;
+        
+	     assertFalse(seElimino);
+         assertEquals(cantidadDeSalasEsperada,cine.cantidadDeSalasAgregadas());
+      
+    }
 	
 }
