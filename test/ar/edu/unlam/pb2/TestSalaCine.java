@@ -106,12 +106,12 @@ public class TestSalaCine {
         
         Cliente pedro=new Cliente(111111111L, 22,"pedro","apellido");
         Cliente jose=new Cliente(211111111L, 32,"joseo","apellido");
-        Cliente jose1=new Cliente(211111111L, 32,"joseo","apellido");
+        Cliente juan=new Cliente(22222222L, 23,"juan","apellido");
         
 
         sala1.agregarCliente(pedro);
         sala1.agregarCliente(jose);
-        sala1.agregarCliente(jose1);
+        sala1.agregarCliente(juan);
         
         assertEquals(2, sala1.getListaDeClientes().size());
     }
