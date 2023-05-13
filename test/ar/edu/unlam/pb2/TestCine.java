@@ -173,4 +173,25 @@ public class TestCine {
       
     }
 	
+	@Test
+    public void testQueVerificaQueNoPuedoEliminarUnaSalaDeCineQueNoExiste() {
+		 String nombre="Cinepolis";
+		 
+	     Integer numero=1; 
+	     Integer capacidad=100;
+	     Integer numeroNuevaSala=4; 
+	     Integer capacidadNuevaSala=200;
+	        
+		 Cine cine = new Cine(nombre);
+	     SalaCine sala1 = new SalaCine2d(numero, capacidad);
+	     SalaCine sala3 = new SalaCine2d(numeroNuevaSala, capacidadNuevaSala);
+	     cine.agregarSala(sala1);
+	     Boolean seElimino=cine.eliminarUnaSala(sala3); 
+         Integer cantidadDeSalasEsperada=1;
+        
+	     assertFalse(seElimino);
+         assertEquals(cantidadDeSalasEsperada,cine.cantidadDeSalasAgregadas());
+      
+    }
+	
 }
