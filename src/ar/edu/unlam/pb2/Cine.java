@@ -98,6 +98,19 @@ public class Cine {
 		}
 		return null;
 	}
+	
+	public Boolean agregarFuncionesAlCine(FuncionDeCine nuevaFuncion) {
+		return this.funciones.add(nuevaFuncion);
+	}
+	
+	public FuncionDeCine buscarfuncionPorID(Integer id) {
+		for (FuncionDeCine funcionDeCine : funciones) {
+			if(funcionDeCine.getId().equals(id)) {
+				return funcionDeCine;
+			}
+		}
+		return null;
+	}
 	 
 
 }
