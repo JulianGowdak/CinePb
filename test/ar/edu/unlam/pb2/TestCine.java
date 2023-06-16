@@ -510,7 +510,5 @@ public class TestCine {
 		assertFalse(seQuito);
 		
 	 }
-
-
 	
 }
