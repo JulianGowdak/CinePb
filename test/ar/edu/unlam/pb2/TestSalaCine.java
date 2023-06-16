@@ -106,6 +106,27 @@ public class TestSalaCine {
 	}
 	
 	@Test
+	public void testQueNoPermitaQuitarUnaFuncionQueNoExistente() {
+	
+		Integer idFuncion1=1;
+		LocalDate fecha1=LocalDate.of(2023, 06, 9);
+		LocalTime horaInicio1=LocalTime.of(15, 30);
+		TipoDeIdioma idioma=TipoDeIdioma.ESPAÑOL;
+		TipoDeVisualizacion visualizacion=TipoDeVisualizacion.VISUALIZACION_3D;	
+		
+		SalaCine3d sala1 = new SalaCine3d(1, 100);
+	    Pelicula pelicula = new Pelicula(1,"El Padrino", "Drama", 175, "Francis Ford Coppola", Arrays.asList("Marlon Brando", "Al Pacino", "James Caan"));
+	    FuncionDeCine Funcion1=new FuncionDeCine(idFuncion1, fecha1, horaInicio1, idioma, pelicula, visualizacion);
+	    FuncionDeCine NuevaFuncion=new FuncionDeCine(2, fecha1, horaInicio1, idioma, pelicula, visualizacion);
+	    sala1.ingresarFuncionASalasDeCine(Funcion1);
+	    
+	    Boolean seQuito=sala1.quitarFuncionDeSalaDeCine(NuevaFuncion);
+	   
+	    assertFalse(seQuito);
+	    
+	}
+	
+	@Test
     public void testQueNoPuedaAgregarClientesCuandoNoHayLugar() {
 
         SalaCine2d sala1 = new SalaCine2d(1, 2);
