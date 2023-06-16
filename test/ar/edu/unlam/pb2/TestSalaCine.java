@@ -12,7 +12,8 @@ public class TestSalaCine {
 
 	@Test
 	public void testCrearSala2d() {
-	    SalaCine2d sala = new SalaCine2d(1, 100);
+	    
+		SalaCine2d sala = new SalaCine2d(1, 100);
 	    assertEquals((Integer)1, sala.getNumero());
 	    assertEquals((Integer)100, sala.getCapacidad());
 	    
@@ -20,7 +21,8 @@ public class TestSalaCine {
 	
 	@Test
 	public void testCrearSala3d() {
-	    SalaCine3d sala = new SalaCine3d(1, 100);
+	    
+		SalaCine3d sala = new SalaCine3d(1, 100);
 	    assertEquals((Integer)1, sala.getNumero());
 	    assertEquals((Integer)100, sala.getCapacidad());
 	    
@@ -81,6 +83,27 @@ public class TestSalaCine {
 	    
 	}
 
+	@Test
+	public void testQuitarUnaFuncionDeUnaSala() {
+
+		Integer idFuncion1=1;
+		LocalDate fecha1=LocalDate.of(2023, 06, 9);
+		LocalTime horaInicio1=LocalTime.of(15, 30);
+		TipoDeIdioma idioma=TipoDeIdioma.ESPAÑOL;
+		TipoDeVisualizacion visualizacion=TipoDeVisualizacion.VISUALIZACION_2D;	
+		
+		SalaCine2d sala1 = new SalaCine2d(1, 100);
+	    Pelicula pelicula = new Pelicula(1,"El Padrino", "Drama", 175, "Francis Ford Coppola", Arrays.asList("Marlon Brando", "Al Pacino", "James Caan"));
+	    FuncionDeCine nuevaFuncion=new FuncionDeCine(idFuncion1, fecha1, horaInicio1, idioma, pelicula, visualizacion);
+	    sala1.ingresarFuncionASalasDeCine(nuevaFuncion);
+	    Boolean seQuito=sala1.quitarFuncionDeSalaDeCine(nuevaFuncion);
+	    
+	    Integer cantidadDeFuncionesEsperada=0;
+	    assertTrue(seQuito);
+	    assertTrue(sala1.getFuncionesEnSalas().isEmpty());
+	    assertEquals(cantidadDeFuncionesEsperada,sala1.cantidadDeFuncionesAgregadas());
+	    
+	}
 	
 	@Test
     public void testQueNoPuedaAgregarClientesCuandoNoHayLugar() {
