@@ -147,6 +147,32 @@ public class Cine {
 		}
 		return funcionesDelDia;
 	}
+	
+	public Boolean asignarUnaPeliculaAUnaFuncionDeCine(Integer idFuncion,Pelicula asignarPelicula) {
+		Boolean seCambio=false;
+		FuncionDeCine buscada=buscarfuncionPorID(idFuncion);
+		
+		for (FuncionDeCine funcionDeCine : funciones) {
+			if(funcionDeCine.equals(buscada)) {
+				funcionDeCine.setPeliculas(asignarPelicula);
+				return seCambio=true;
+			}	
+		 }
+		return seCambio;
+	}
+	
+	public Boolean agregarFuncionDeCineAUnaSala(SalaCine salaAIngresar,FuncionDeCine agregarFuncion) {
+		Boolean seAgrego=false;
+		
+		if(salaAIngresar!=null && salaAIngresar.getTipo().equals(TipoDeSala.SALA_2D)) {
+		   salaAIngresar.ingresarFuncionASalasDeCine(agregarFuncion);
+		   return seAgrego=true; 
+	      }else if(salaAIngresar!=null && salaAIngresar.getTipo().equals(TipoDeSala.SALA_3D)) {
+			      salaAIngresar.ingresarFuncionASalasDeCine(agregarFuncion);
+			      return seAgrego=true;
+		       }					
+	        return seAgrego;	
+	   }
 
 
 
