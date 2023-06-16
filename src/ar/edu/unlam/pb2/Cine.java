@@ -1,5 +1,7 @@
 package ar.edu.unlam.pb2;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -112,5 +114,24 @@ public class Cine {
 		return null;
 	}
 	 
+	public Boolean cambiarHorarioDeUnaFuncion(Integer idFuncion,LocalTime horaNueva) {
+		Boolean seCambio=false;
+		FuncionDeCine buscada=buscarfuncionPorID(idFuncion);
+		
+		for (FuncionDeCine funcionDeCine : funciones) {
+			if(funcionDeCine.equals(buscada)) {
+				funcionDeCine.setHoraInicio(horaNueva);;
+				return seCambio=true;
+			}
+		}
+		return seCambio;
+	}
+	
+	public FuncionDeCine crearFuncionDeCine(Integer idFuncion, LocalDate fecha, LocalTime horaInicio, TipoDeIdioma idioma, Pelicula pelicula, TipoDeVisualizacion visualizacion) {
+		FuncionDeCine nuevaFuncion=new FuncionDeCine(idFuncion, fecha, horaInicio,idioma,null,visualizacion);
+	    return nuevaFuncion;
+		
+	}
+
 
 }
