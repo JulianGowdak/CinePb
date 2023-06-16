@@ -2,6 +2,8 @@ package ar.edu.unlam.pb2;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -167,5 +169,32 @@ public class TestCine {
          assertEquals(cantidadDeSalasEsperada,cine.cantidadDeSalasAgregadas());
       
     }
+	
+	@Test
+    public void quePermitaAsignarUnaPeliculaAUnaFuncionDesdeUnCine() {
+		String nombreCine="Cinepolis";
+	     
+	    Integer idFuncion=1;
+		LocalDate fecha=LocalDate.of(2023, 06, 9);
+	    LocalTime horaInicio1=LocalTime.of(15, 30);
+		TipoDeIdioma idioma=TipoDeIdioma.ESPAÑOL;
+		TipoDeVisualizacion visualizacion=TipoDeVisualizacion.VISUALIZACION_2D;
+	    Integer idPelicula=1;
+	     
+		Cine cine = new Cine(nombreCine);
+		
+	    Pelicula peliculaInicial =null;    
+	    Pelicula peliculaFinal = new Pelicula(idPelicula,"El Padrino", "Drama", 175, "Francis Ford Coppola", Arrays.asList("Marlon Brando", "Al Pacino", "James Caan"));
+	       
+	    FuncionDeCine nueva=cine.crearFuncionDeCine(idFuncion, fecha, horaInicio1, idioma,peliculaInicial, visualizacion);
+	    cine.agregarFuncionesAlCine(nueva);
+	    
+	    Boolean seAsignaron=cine.asignarUnaPeliculaAUnaFuncionDeCine(idFuncion,peliculaFinal);
+	      
+	    assertTrue(seAsignaron);
+	    assertEquals(peliculaFinal, nueva.getPeliculas());
+	       
+    }
+
 	
 }
