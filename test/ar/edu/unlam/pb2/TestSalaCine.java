@@ -127,6 +127,32 @@ public class TestSalaCine {
 	}
 	
 	@Test
+	public void testQueVerifiqueElFuncionamientoDeAgregarUnClienteAUnaSala() {
+	
+	    Cliente pedro=new Cliente(111111111L, 22,"pedro","apellido");
+		SalaCine2d sala = new SalaCine2d(1, 100);
+		
+		Boolean seAgrego=sala.agregarCliente(pedro);
+		assertTrue(seAgrego);
+		
+	 }
+	
+	@Test
+	public void testQueVerifiqueElFuncionamientoDeSacarUnClienteDeSala() {
+
+	    Cliente pedro=new Cliente(111111111L, 22,"pedro","apellido");
+		SalaCine2d sala = new SalaCine2d(1, 100);
+		sala.agregarCliente(pedro);
+		
+		Boolean seQuito=sala.quitarClienteDeSala(pedro);
+		Integer cantidadDeSalasEsperada=0;
+		
+		assertTrue(seQuito);
+		assertEquals(cantidadDeSalasEsperada,sala.cantidadDeClientesAgregados());
+		
+	 }
+	
+	@Test
     public void testQueNoPuedaAgregarClientesCuandoNoHayLugar() {
 
         SalaCine2d sala1 = new SalaCine2d(1, 2);
