@@ -330,6 +330,70 @@ public class TestCine {
 	     assertEquals(visualizacion,nueva.getVisualizacion());
 	         
     }
+	
+	@Test
+	public void testQuePermiteAgregarUnClienteALaSala2d() {
+
+    	 String nombreCine="Cinepolis"; 
+	     Integer idFuncion=1;
+		 LocalDate fecha=LocalDate.of(2023, 06, 9);
+		 LocalTime horaInicio1=LocalTime.of(15, 30);
+		 TipoDeIdioma idioma=TipoDeIdioma.ESPAÑOL;
+		 TipoDeVisualizacion visualizacion=TipoDeVisualizacion.VISUALIZACION_2D;
+		 Integer idPelicula=1;
+	     Integer numero=1; 
+	     Integer capacidad=100;
+	     
+		 Cine cine = new Cine(nombreCine);
+	     Pelicula peliculaInicial =null;    
+	     Pelicula peliculaFinal = new Pelicula(idPelicula,"El Padrino", "Drama", 175, "Francis Ford Coppola", Arrays.asList("Marlon Brando", "Al Pacino", "James Caan"));  
+	     SalaCine2d sala = new SalaCine2d(numero, capacidad);
+	     
+	     FuncionDeCine nueva=cine.crearFuncionDeCine(idFuncion, fecha, horaInicio1, idioma,peliculaInicial, visualizacion);
+	     cine.agregarFuncionesAlCine(nueva);
+	     cine.asignarUnaPeliculaAUnaFuncionDeCine(idFuncion,peliculaFinal);     
+	     cine.agregarFuncionDeCineAUnaSala(sala, nueva);
+		 
+	     Cliente pedro=new Cliente(111111111L, 22,"pedro","apellido");
+		 Boolean seAgrego=sala.agregarCliente(pedro);
+		
+		 assertTrue(seAgrego);
+		
+		
+	 }
+	
+	@Test
+	public void testQuePermiteSacarUnClienteDeUnaSala2d() {
+		String nombreCine="Cinepolis";
+	    Integer idFuncion=1;
+		LocalDate fecha=LocalDate.of(2023, 06, 9);
+		LocalTime horaInicio1=LocalTime.of(15, 30);
+		TipoDeIdioma idioma=TipoDeIdioma.ESPAÑOL;
+		TipoDeVisualizacion visualizacion=TipoDeVisualizacion.VISUALIZACION_2D;
+		Integer idPelicula=1;
+	    Integer numero=1; 
+	    Integer capacidad=100;
+	     
+		Cine cine = new Cine(nombreCine);
+	    Pelicula peliculaInicial =null;    
+	    Pelicula peliculaFinal = new Pelicula(idPelicula,"El Padrino", "Drama", 175, "Francis Ford Coppola", Arrays.asList("Marlon Brando", "Al Pacino", "James Caan"));  
+	    SalaCine2d sala = new SalaCine2d(numero, capacidad);
+	   
+	    FuncionDeCine nueva=cine.crearFuncionDeCine(idFuncion, fecha, horaInicio1, idioma,peliculaInicial, visualizacion);
+	    cine.agregarFuncionesAlCine(nueva);
+	    cine.asignarUnaPeliculaAUnaFuncionDeCine(idFuncion,peliculaFinal);     
+	    cine.agregarFuncionDeCineAUnaSala(sala, nueva);  
+	    Cliente pedro=new Cliente(111111111L, 22,"pedro","apellido");
+		sala.ingresarFuncionASalasDeCine(nueva);
+		sala.agregarCliente(pedro);
+		
+		Boolean seQuito=sala.quitarClienteDeSala(pedro);
+		Integer cantidadDeSalasEsperada=0;
+		
+		assertTrue(seQuito);
+		assertEquals(cantidadDeSalasEsperada,sala.cantidadDeClientesAgregados());
+		
+	 }
 
 	
 }
