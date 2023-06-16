@@ -132,6 +132,22 @@ public class Cine {
 	    return nuevaFuncion;
 		
 	}
+	
+	public Integer cantidadDeFuncionesAgregadas() {
+		return this.funciones.size();
+		
+	}
+	
+	public HashSet <FuncionDeCine> buscarfuncionesDelDia(LocalDate fechaFuncion) {
+		HashSet<FuncionDeCine> funcionesDelDia= new HashSet<>();
+		for (FuncionDeCine funcionDeCine : funciones) {
+			if(funcionDeCine.getFecha().equals(fechaFuncion)) {
+				funcionesDelDia.add(funcionDeCine);
+			}
+		}
+		return funcionesDelDia;
+	}
+
 
 
 }
