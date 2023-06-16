@@ -90,6 +90,14 @@ public class Cine {
 		this.peliculas = peliculas;
 	}
 	 
+	public SalaCine buscarSalaPorID(Integer idSala) {
+		for (SalaCine salaCine : salas) {
+			if(salaCine.getNumero().equals(idSala)) {
+				return salaCine;
+			}
+		}
+		return null;
+	}
 	 
 
 }
