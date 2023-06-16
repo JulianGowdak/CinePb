@@ -3,26 +3,32 @@ package ar.edu.unlam.pb2;
 import java.util.List;
 
 public class Pelicula {
+	private Integer IdPelicula;
 	private String titulo;
     private String genero;
     private Integer duracion;
     private String director;
     private List<String> reparto;
-    private String formato;
 
-    
-    public Pelicula(String titulo, String genero, Integer duracion, String director, List<String> reparto,String formato) {
-        this.titulo = titulo;
+    public Pelicula(Integer IdPelicula,String titulo, String genero, Integer duracion, String director, List<String> reparto) {
+        this.IdPelicula=IdPelicula;
+    	this.titulo = titulo;
         this.genero = genero;
         this.duracion = duracion;
         this.director = director;
         this.reparto = reparto;
-        this.setFormato(formato);
         
     }
-    
-    
-    public String getTitulo() {
+      
+    public Integer getIdPelicula() {
+		return IdPelicula;
+	}
+
+	public void setIdPelicula(Integer idPelicula) {
+		IdPelicula = idPelicula;
+	}
+
+	public String getTitulo() {
         return titulo;
     }
     
@@ -42,12 +48,10 @@ public class Pelicula {
         return reparto;
     }
     
-
 	public void agregarActor(String nombre) {
 		this.reparto.add(nombre);
 		
 	}
-
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
@@ -69,22 +73,10 @@ public class Pelicula {
 		this.reparto = reparto;
 	}
 
-
 	public String getDuracionHorasMinutos() {
 		int horas = this.duracion / 60;
         int minutos = this.duracion % 60;
         return horas + "h " + minutos + "m";
 	}
-
-
-	public String getFormato() {
-		return formato;
-	}
-
-
-	public void setFormato(String formato) {
-		this.formato = formato;
-	}
-	
 
 }
