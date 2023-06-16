@@ -221,6 +221,27 @@ public class TestCine {
 	     
     }
 
+	@Test 
+    public void quePermitaCambiarElHorarioDeUnaFuncion() {
+		String nombreCine="Cinepolis";   
+	    Integer idFuncion=1;
+		LocalDate fecha=LocalDate.of(2023, 06, 9);
+		LocalTime horaInicio1=LocalTime.of(15, 30);
+		TipoDeIdioma idioma=TipoDeIdioma.ESPAÑOL;
+		TipoDeVisualizacion visualizacion=TipoDeVisualizacion.VISUALIZACION_2D;
+	        
+		Cine cine = new Cine(nombreCine);
+	    Pelicula pelicula = new Pelicula(1,"El Padrino", "Drama", 175, "Francis Ford Coppola", Arrays.asList("Marlon Brando", "Al Pacino", "James Caan"));    
+	    FuncionDeCine nueva=cine.crearFuncionDeCine(idFuncion, fecha, horaInicio1, idioma, pelicula, visualizacion);
+	    cine.agregarFuncionesAlCine(nueva);
+	     
+	    LocalTime horaNueva=LocalTime.of(17, 30);
+	    Boolean seCambioHora=cine.cambiarHorarioDeUnaFuncion(idFuncion, horaNueva);
+	     
+	    assertTrue(seCambioHora);
+	    assertEquals(horaNueva,nueva.getHoraInicio());
+	        
+    }
 
 	
 }
