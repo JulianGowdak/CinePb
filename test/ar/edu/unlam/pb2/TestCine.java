@@ -242,6 +242,36 @@ public class TestCine {
 	    assertEquals(horaNueva,nueva.getHoraInicio());
 	        
     }
+	
+	@Test
+    public void BuscarFuncionDeCineDelDia() {
+		String nombreCine="Cinepolis"; 
+	    Integer idFuncion1=1;
+	    Integer idFuncion2=2;
+	    Integer idFuncion3=3;
+		LocalDate fecha1=LocalDate.of(2023, 06, 9);
+		LocalDate fecha2=LocalDate.of(2023, 06, 12);
+		LocalTime horaInicio1=LocalTime.of(15, 30);
+		LocalTime horaInicio2=LocalTime.of(18, 40);
+		LocalTime horaInicio3=LocalTime.of(15, 30);
+		TipoDeIdioma idioma=TipoDeIdioma.ESPAÑOL;
+		TipoDeVisualizacion visualizacion=TipoDeVisualizacion.VISUALIZACION_2D;
+	        
+		Cine cine = new Cine(nombreCine);
+	    Pelicula pelicula = new Pelicula(1,"El Padrino", "Drama", 175, "Francis Ford Coppola", Arrays.asList("Marlon Brando", "Al Pacino", "James Caan"));
+	    FuncionDeCine nueva1=cine.crearFuncionDeCine(idFuncion1, fecha1, horaInicio1, idioma, pelicula, visualizacion);
+	    FuncionDeCine nueva2=cine.crearFuncionDeCine(idFuncion2, fecha1, horaInicio2, idioma, pelicula, visualizacion);
+	    FuncionDeCine nueva3=cine.crearFuncionDeCine(idFuncion3, fecha2, horaInicio3, idioma, pelicula, visualizacion);
+	     
+	    cine.agregarFuncionesAlCine(nueva1);
+	    cine.agregarFuncionesAlCine(nueva2);
+	    cine.agregarFuncionesAlCine(nueva3);
+	     
+	    HashSet<FuncionDeCine> resultado = cine.buscarfuncionesDelDia(fecha1);
+	     
+	    assertEquals(2, resultado.size());
+	     
+    }
 
 	
 }
