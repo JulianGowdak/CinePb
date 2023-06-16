@@ -300,6 +300,36 @@ public class TestCine {
 	     assertEquals(CantidadDeFunciones, sala.cantidadDeFuncionesAgregadas());
 	     
     }
+	
+	@Test
+    public void testquePermitaAgregarUnaFuncionDeCineAUnaSala3d() {
+
+    	 String nombreCine="Cinepolis"; 
+	     Integer idFuncion=1;
+		 LocalDate fecha=LocalDate.of(2023, 06, 9);
+		 LocalTime horaInicio1=LocalTime.of(15, 30);
+		 TipoDeIdioma idioma=TipoDeIdioma.ESPAÑOL;
+		 TipoDeVisualizacion visualizacion=TipoDeVisualizacion.VISUALIZACION_3D;
+		 Integer idPelicula=1;
+	     Integer numero=1; 
+	     Integer capacidad=100;
+	     
+		 Cine cine = new Cine(nombreCine);
+	     Pelicula peliculaInicial =null;    
+	     Pelicula peliculaFinal = new Pelicula(idPelicula,"El Padrino", "Drama", 175, "Francis Ford Coppola", Arrays.asList("Marlon Brando", "Al Pacino", "James Caan"));  
+	     SalaCine3d sala = new SalaCine3d(numero, capacidad);   
+	     FuncionDeCine nueva=cine.crearFuncionDeCine(idFuncion, fecha, horaInicio1, idioma,peliculaInicial, visualizacion);
+	     cine.agregarFuncionesAlCine(nueva);
+	     cine.asignarUnaPeliculaAUnaFuncionDeCine(idFuncion,peliculaFinal);     
+	    
+	     Boolean seAgregoASala=cine.agregarFuncionDeCineAUnaSala(sala, nueva);
+	     Integer CantidadDeFunciones=1;
+			
+	     assertTrue(seAgregoASala); 
+	     assertEquals(CantidadDeFunciones, sala.cantidadDeFuncionesAgregadas());
+	     assertEquals(visualizacion,nueva.getVisualizacion());
+	         
+    }
 
 	
 }
