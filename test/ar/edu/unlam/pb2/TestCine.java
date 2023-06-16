@@ -471,6 +471,46 @@ public class TestCine {
 		assertTrue(seQuito);
 		
 	 }
+	
+	@Test
+	public void testQueNoPermiteSacarAUnClienteDeUnaSala3dSinoDevuelveElLentePrestado() {
+		
+		String nombreCine="Cinepolis";  
+	    Integer idFuncion=1;
+		LocalDate fecha=LocalDate.of(2023, 06, 9);
+		LocalTime horaInicio1=LocalTime.of(15, 30);
+		TipoDeIdioma idioma=TipoDeIdioma.ESPAÑOL;
+		TipoDeVisualizacion visualizacion=TipoDeVisualizacion.VISUALIZACION_3D;
+		Integer idPelicula=1;
+	    Integer numero=1; 
+	    Integer capacidad=100;
+	     
+		Cine cine = new Cine(nombreCine);
+	    Pelicula peliculaInicial =null;    
+	    Pelicula peliculaFinal = new Pelicula(idPelicula,"El Padrino", "Drama", 175, "Francis Ford Coppola", Arrays.asList("Marlon Brando", "Al Pacino", "James Caan"));  
+	    SalaCine3d sala = new SalaCine3d(numero, capacidad);
+	    FuncionDeCine nueva=cine.crearFuncionDeCine(idFuncion, fecha, horaInicio1, idioma,peliculaInicial, visualizacion);
+	    cine.agregarFuncionesAlCine(nueva);
+	    cine.asignarUnaPeliculaAUnaFuncionDeCine(idFuncion,peliculaFinal);     
+	    cine.agregarFuncionDeCineAUnaSala(sala, nueva);  
+	    
+	    Integer idLente=1; 
+        Cliente usuario=null;
+        Lente3D anteojos3D=new Lente3D(idLente,usuario);
+	    Cliente pedro=new Cliente(111111111L, 22,"pedro","apellido");
+	
+		sala.ingresarFuncionASalasDeCine(nueva);
+		sala.agregarLentes3dASala(anteojos3D);
+		sala.agregarCliente(pedro);
+		sala.prestarLente3dACliente(anteojos3D, 111111111L);
+	
+		Boolean seDevolvio=sala.DevolverLentes3D(null);
+		Boolean seQuito=sala.quitarClienteSala3D(pedro,seDevolvio);
+		
+		assertFalse(seQuito);
+		
+	 }
+
 
 	
 }
