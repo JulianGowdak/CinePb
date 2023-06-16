@@ -12,14 +12,16 @@ public class TestPelicula {
 
 	 @Test
 	 public void testGetTitulo() {
-	        Pelicula pelicula = new Pelicula("El Padrino", "Drama", 175, "Francis Ford Coppola", Arrays.asList("Marlon Brando", "Al Pacino", "James Caan"),"2d");
-	        String titulo = pelicula.getTitulo();
-	        assertEquals("El Padrino", titulo);
-	    }
+		 Integer idPelicula=1;
+	     Pelicula pelicula = new Pelicula(idPelicula,"El Padrino", "Drama", 175, "Francis Ford Coppola", Arrays.asList("Marlon Brando", "Al Pacino", "James Caan"));
+	     String titulo = pelicula.getTitulo();
+	     assertEquals("El Padrino", titulo);
+	 }
 	 
 	 @Test
 	 public void testAgregarActor() {
-	     Pelicula pelicula = new Pelicula("El Padrino", "Drama", 175, "Francis Ford Coppola", new ArrayList<>(),"2d");
+		 Integer idPelicula=1;
+	     Pelicula pelicula = new Pelicula(idPelicula,"El Padrino", "Drama", 175, "Francis Ford Coppola", new ArrayList<>());
 	     pelicula.agregarActor("Marlon Brando");
 	     pelicula.agregarActor("Al Pacino");
 	     List<String> reparto = pelicula.getReparto();
@@ -29,7 +31,8 @@ public class TestPelicula {
 	 
 	 @Test
 	 public void testGetDuracionHorasMinutos() {
-	     Pelicula pelicula = new Pelicula("El Padrino", "Drama", 175, "Francis Ford Coppola", Arrays.asList("Marlon Brando", "Al Pacino", "James Caan"),"2d");
+		 Integer idPelicula=1;
+	     Pelicula pelicula = new Pelicula(idPelicula,"El Padrino", "Drama", 175, "Francis Ford Coppola", Arrays.asList("Marlon Brando", "Al Pacino", "James Caan"));
 	     String duracionHorasMinutos = pelicula.getDuracionHorasMinutos();
 	     assertEquals("2h 55m", duracionHorasMinutos);
 	 }

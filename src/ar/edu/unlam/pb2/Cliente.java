@@ -61,8 +61,6 @@ public class Cliente {
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
 		Cliente other = (Cliente) obj;
 		if (dni == null) {
 			if (other.dni != null)
